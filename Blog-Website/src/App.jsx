@@ -1,5 +1,5 @@
 import AboutPage from './Pages/AboutPage'
-import ArticlesListPage from './Pages/ArticleListPage'
+import ArticleListPage from './Pages/ArticleListPage'
 import HomePage from './Pages/HomePage'
 import ArticlePage from './Pages/ArticlePage'
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom'
@@ -19,7 +19,7 @@ const routes = [{
   },
   {
     path: '/articles',
-    element: <ArticlesListPage />
+    element: <ArticleListPage />
   },
   {
     path: '/articles/:name',
