@@ -12,7 +12,7 @@ export default function NavBar() {
                 </li>
 
                 <li>
-                    <Link to={'/artciles/:name'}>ArticlesPage</Link>
+                    <Link to={'/articles'}>ArticlesPage</Link>
                 </li>
             </ul>
         </>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+
 export default function ArticlesList({ articles }) {
     return (
         <>
@@ -11,5 +12,4 @@ export default function ArticlesList({ articles }) {
             ))}
         </>
     );
-
 }

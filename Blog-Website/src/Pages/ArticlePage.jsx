@@ -3,7 +3,8 @@ import articles from "../article-content";
 
 export default function ArticlePage() {
     const { name } = useParams();
-    const article = articles.find(a => a.name == name);
+    const article = articles.find((a) => a.name === name);
+
     return (
         <>
             <h1>{article.title}</h1>
