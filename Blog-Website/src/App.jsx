@@ -1,27 +1,34 @@
-import AboutPage from './components/AboutPage'
-import ArticlesListPage from './components/ArticleListPage'
-import HomePage from './components/HomePage'
-import ArticlePage from './components/ArticlePage'
+import AboutPage from './Pages/AboutPage'
+import ArticlesListPage from './Pages/ArticleListPage'
+import HomePage from './Pages/HomePage'
+import ArticlePage from './Pages/ArticlePage'
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom'
 import './App.css'
+import Layout from './Layout'
 
 const routes = [{
   path: '/',
-  element: <HomePage />
-},
-{
-  path: '/about',
-  element: <AboutPage />
-},
-{
-  path: '/articles',
-  element: <ArticlesListPage />
-},
-{
-  path: '/articles/:name',
-  element: <ArticlePage />
-}
-]
+  element: <Layout />,
+  children: [{
+    path: '/',
+    element: <HomePage />
+  },
+  {
+    path: '/about',
+    element: <AboutPage />
+  },
+  {
+    path: '/articles',
+    element: <ArticlesListPage />
+  },
+  {
+    path: '/articles/:name',
+    element: <ArticlePage />
+  }
+  ]
+
+}]
+
 const router = createBrowserRouter(routes);
 function App() {
   return (
