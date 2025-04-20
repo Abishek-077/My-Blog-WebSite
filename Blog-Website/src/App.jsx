@@ -5,10 +5,13 @@ import ArticlePage from './Pages/ArticlePage'
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom'
 import './App.css'
 import Layout from './Layout'
+import PageNotFound from './PageNotFound'
 
 const routes = [{
   path: '/',
   element: <Layout />,
+  errorElement: <PageNotFound />,
+
   children: [{
     path: '/',
     element: <HomePage />

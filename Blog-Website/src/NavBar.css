@@ -1,0 +1,87 @@
+/* Navbar styling */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+li {
+    flex: 1;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+li:active {
+    transform: scale(0.98);
+}
+
+Link,
+a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 1.2rem 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+li:hover Link,
+li:hover a {
+    color: #fff;
+}
+
+/* Add a subtle underline effect on hover */
+Link::after,
+a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 1rem;
+    left: 50%;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+li:hover Link::after,
+li:hover a::after {
+    width: 60%;
+}
+
+/* Active link styling (if using NavLink) */
+.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.active::after {
+    width: 60% !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    ul {
+        flex-direction: column;
+        border-radius: 0;
+    }
+
+    li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    li:last-child {
+        border-bottom: none;
+    }
+}
