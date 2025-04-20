@@ -1,21 +1,15 @@
 import express from 'express';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
-const articlesInfo = [
-    { name: 'learn-node', upvotes: 0, comments: [] },
-    { name: 'learn-react', upvotes: 0, comments: [] },
-    { name: 'mongodb', upvotes: 0, comments: [] },
-];
-
 const app = express();
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
 
-app.get('/api/articles/:name', async (req, res) => {
-    const { name } = req.params;
+let db;
 
-    const uri = 'mongodb://127.0.0.1:27017'; // ✅ colon (:) instead of dot (.)
+async function connectToDB() {
+    const uri = 'mongodb://127.0.0.1:27017'; // ✅ colon instead of dot
 
     const client = new MongoClient(uri, {
         serverApi: {
@@ -26,33 +20,48 @@ app.get('/api/articles/:name', async (req, res) => {
     });
 
     await client.connect();
+    db = client.db('my-blog-website-db');
+}
 
-    const db = client.db('my-blog-website-db');
-
+app.get('/api/articles/:name', async (req, res) => {
+    const { name } = req.params;
     const article = await db.collection('articles').findOne({ name });
-
     res.json(article);
 });
 
 // Upvote route
-app.post('/api/articles/:name/upvote', (req, res) => {
-    const article = articlesInfo.find(a => a.name === req.params.name);
-    article.upvotes += 1;
-    res.json(article);
+app.post('/api/articles/:name/upvote', async (req, res) => {
+    const { name } = req.params;
+
+    const result = await db.collection('articles').findOneAndUpdate(
+        { name },
+        { $inc: { upvotes: 1 } },
+        { returnDocument: 'after' }
+    );
+
+    res.json(result.value); // ✅ result.value contains the updated document
 });
 
 // Comment route
-app.post('/api/articles/:name/comments', (req, res) => {
+app.post('/api/articles/:name/comments', async (req, res) => {
     const { name } = req.params;
     const { postedBy, text } = req.body;
+    const newComment = { postedBy, text };
 
-    const article = articlesInfo.find(a => a.name === name);
-    article.comments.push({ postedBy, text });
+    const result = await db.collection('articles').findOneAndUpdate(
+        { name },
+        { $push: { comments: newComment } },
+        { returnDocument: 'after' }
+    );
 
-    res.json(article);
+    res.json(result.value); // ✅ result.value contains the updated document
 });
 
-// Start the server
-app.listen(8000, function () {
-    console.log('Server is Listening on port 8000');
-});
+async function start() {
+    await connectToDB();
+    app.listen(8000, function () {
+        console.log('Server is Listening on port 8000');
+    });
+}
+
+start();
