@@ -9,7 +9,7 @@ app.use(express.json());
 let db;
 
 async function connectToDB() {
-    const uri = 'mongodb://127.0.0.1:27017'; // ✅ colon instead of dot
+    const uri = 'mongodb://127.0.0.1:27017';
 
     const client = new MongoClient(uri, {
         serverApi: {
@@ -33,13 +33,13 @@ app.get('/api/articles/:name', async (req, res) => {
 app.post('/api/articles/:name/upvote', async (req, res) => {
     const { name } = req.params;
 
-    const result = await db.collection('articles').findOneAndUpdate(
+    const updatedArticle = await db.collection('articles').findOneAndUpdate(
         { name },
         { $inc: { upvotes: 1 } },
         { returnDocument: 'after' }
     );
 
-    res.json(result.value); // ✅ result.value contains the updated document
+    res.json(updatedArticle);
 });
 
 // Comment route
@@ -48,19 +48,19 @@ app.post('/api/articles/:name/comments', async (req, res) => {
     const { postedBy, text } = req.body;
     const newComment = { postedBy, text };
 
-    const result = await db.collection('articles').findOneAndUpdate(
+    const updatedArticle = await db.collection('articles').findOneAndUpdate(
         { name },
         { $push: { comments: newComment } },
         { returnDocument: 'after' }
     );
 
-    res.json(result.value); // ✅ result.value contains the updated document
+    res.json(updatedArticle);
 });
 
 async function start() {
     await connectToDB();
     app.listen(8000, function () {
-        console.log('Server is Listening on port 8000');
+        console.log('Server is Listening on port 8000.......');
     });
 }
 
