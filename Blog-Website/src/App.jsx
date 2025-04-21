@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider, } from 'react-router-dom'
 import './App.css'
 import Layout from './Layout'
 import PageNotFound from './PageNotFound'
+import axios from 'axios'
 
 const routes = [{
   path: '/',
@@ -26,7 +27,13 @@ const routes = [{
   },
   {
     path: '/articles/:name',
-    element: <ArticlePage />
+    element: <ArticlePage />,
+    loader: async function () {
+      const response = await axios.get('/api/articles/learn-node');// make it think they are running on same port 
+      const { upvotes, comments } = response.data;
+      return { upvotes, comments };
+
+    }
   }
   ]
 
