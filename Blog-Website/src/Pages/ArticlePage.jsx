@@ -1,6 +1,6 @@
 import { useParams, useLoaderData } from "react-router-dom";
 import articles from "../article-content";
-import CommentsList from "../commentsList";
+import CommentsList from "./CommentsList";
 import { useState } from "react";
 import axios from 'axios';
 import AddCommentForm from "../AddCommentForm";
@@ -33,7 +33,7 @@ export default function ArticlePage() {
         <>
             <h1>{article.title}</h1>
             <button onClick={onUpvoteClicked}>Upvote</button>
-            <p>This article has{upvotes} upvotes!</p>
+            <p>This article has {upvotes} upvotes</p>
             {article.content.map(p => <p key={p}>{p}</p>)}
             <AddCommentForm onAddComment={onAddComment} />
             <CommentsList comments={comments} />
