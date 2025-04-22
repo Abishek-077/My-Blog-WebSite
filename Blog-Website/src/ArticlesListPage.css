@@ -1,0 +1,15 @@
+.articles-page {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 1rem;
+}
+
+.articles-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a202c;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
