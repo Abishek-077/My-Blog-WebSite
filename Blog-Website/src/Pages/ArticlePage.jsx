@@ -1,6 +1,6 @@
 import { useParams, useLoaderData } from "react-router-dom";
 import articles from "../article-content";
-import CommentsList from "./CommentsList";
+import CommentsList from "../CommentsList";
 import { useState } from "react";
 import axios from 'axios';
 import AddCommentForm from "../AddCommentForm";
@@ -8,10 +8,11 @@ import AddCommentForm from "../AddCommentForm";
 export default function ArticlePage() {
     const { name } = useParams();
     const { upvotes: initialUpvotes, comments: initialComments } = useLoaderData();
-    const [upvotes, setUpvotes] = useState(initialUpvotes); // ✅ FIXED: useState destructuring
+    const [upvotes, setUpvotes] = useState(initialUpvotes);
     const [comments, setComments] = useState(initialComments);
 
-    const article = articles.find((a) => a.name === name);
+    const article = articles.find(a => a.name === name);
+
 
     async function onUpvoteClicked() {
         const response = await axios.post('/api/articles/' + name + '/upvote');
@@ -26,7 +27,6 @@ export default function ArticlePage() {
         });
         const updatedArticleData = response.data;
         setComments(updatedArticleData.comments);
-
     }
 
     return (
@@ -34,7 +34,9 @@ export default function ArticlePage() {
             <h1>{article.title}</h1>
             <button onClick={onUpvoteClicked}>Upvote</button>
             <p>This article has {upvotes} upvotes</p>
-            {article.content.map(p => <p key={p}>{p}</p>)}
+            {article.content.map(p =>
+                <p key={p}>{p}</p>
+            )}
             <AddCommentForm onAddComment={onAddComment} />
             <CommentsList comments={comments} />
         </>
@@ -42,7 +44,8 @@ export default function ArticlePage() {
 }
 
 export async function loader({ params }) {
-    const response = await axios.get('/api/articles/' + params.name); // assume same port
+    const response = await axios.get('/api/articles/' + params.name);
     const { upvotes, comments } = response.data;
     return { upvotes, comments };
 }
+

@@ -51,7 +51,7 @@ app.post('/api/articles/:name/comments', async (req, res) => {
     const updatedArticle = await db.collection('articles').findOneAndUpdate(
         { name },
         { $push: { comments: newComment } },
-        { returnDocument: 'after' }
+        { returnDocument: 'after' },
     );
 
     res.json(updatedArticle);
