@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider, } from 'react-router-dom'
 import './App.css'
 import Layout from './Layout'
 import PageNotFound from './PageNotFound'
+import LoginPage from './Pages/LoginPage'
+import CreateAccountPage from './Pages/CreateAccountPage'
 
 const routes = [{
   path: '/',
@@ -28,6 +30,14 @@ const routes = [{
     path: '/articles/:name',
     element: <ArticlePage />,
     loader: articleLoader,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />
+  },
+  {
+    path: '/createAccount',
+    element: <CreateAccountPage />
   }
   ]
 
