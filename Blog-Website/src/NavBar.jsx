@@ -33,11 +33,13 @@ export default function NavBar() {
                         )}
 
                         <li>
-                            {user
-                                ? <button onClick={() => signOut(getAuth())}>Log Out</button>
-                                : <button onClick={() => navigate('/login')}>Log In</button>
-                            }
+                            {user ? (
+                                <button className='button-style' onClick={() => signOut(getAuth())}>Log Out</button>
+                            ) : (
+                                <button className='button-style' onClick={() => navigate('/login')}>Log In</button>
+                            )}
                         </li>
+
                     </>
                 )}
             </ul>

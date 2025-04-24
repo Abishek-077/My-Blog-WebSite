@@ -56,10 +56,20 @@ a::after {
     transform: translateX(-50%);
 }
 
+.button-style {
+    padding: 15px;
+    margin: 10px;
+
+}
+
+
+
 li:hover Link::after,
 li:hover a::after {
     width: 60%;
 }
+
+
 
 /* Active link styling (if using NavLink) */
 .active {
