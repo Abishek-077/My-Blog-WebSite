@@ -15,11 +15,11 @@ export default function NavBar() {
                 </li>
 
                 <li>
-                    <Link to={'/about'}>AboutPage</Link>
+                    <Link to={'/about'}>About Me</Link>
                 </li>
 
                 <li>
-                    <Link to={'/articles'}>ArticlesPage</Link>
+                    <Link to={'/articles'}>My Articles</Link>
                 </li>
 
                 {isLoading ? (

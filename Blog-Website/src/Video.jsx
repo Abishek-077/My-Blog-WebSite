@@ -1,20 +1,25 @@
-import '../Video.css'; // fixed typo
+import './Video.css';
 
 export default function Video({ video }) {
     if (!video) return null;
 
     const getYouTubeId = (url) => {
-        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-        const match = url.match(regExp);
-        return (match && match[2].length === 11) ? match[2] : null;
+        try {
+            const urlObj = new URL(url);
+            return urlObj.searchParams.get("v") || url.split("/").pop();
+        } catch (err) {
+            console.error("Invalid YouTube URL:", url);
+            return null;
+        }
     };
 
     const videoId = getYouTubeId(video.url);
-    if (!videoId) return null;
+    if (!videoId) return <p>Invalid or missing video URL</p>;
 
     return (
         <div className="video-card">
             <h3 className="video-title">{video.title}</h3>
+
             <div className="video-thumbnail">
                 <iframe
                     width="100%"
@@ -26,6 +31,7 @@ export default function Video({ video }) {
                     allowFullScreen
                 ></iframe>
             </div>
+
             {video.description && (
                 <p className="video-description">{video.description}</p>
             )}

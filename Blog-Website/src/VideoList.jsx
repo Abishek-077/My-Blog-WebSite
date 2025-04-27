@@ -1,13 +1,15 @@
 // VideoList.js
-import Video from "./Pages/vedio"; // Import the Video component
-import './VedioList.css';
+
+import './VideoList.css';
+import Video from './Video';
+
 
 export default function VideosList({ videos, emptyHeading }) {
     const count = videos.length;
     let heading = emptyHeading;
 
     if (count > 0) {
-        const noun = count > 1 ? 'Videos' : 'Video';
+        const noun = count > 1 ? ':Day 180: AI/ML Journey' : 'Video';
         heading = count + ' ' + noun;
     }
 
