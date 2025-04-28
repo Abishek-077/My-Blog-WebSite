@@ -1,44 +1,83 @@
-.article-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+/* Article List Wrapper */
+.article-list-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
 }
 
+/* Each Article Card */
 .article-card {
-    background: #ffffff;
-    padding: 1.5rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 0.75rem;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* On Hover */
 .article-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-10px);
+    box-shadow: 0 12px 38px rgba(0, 0, 0, 0.5);
 }
 
+/* Link Style */
 .article-link {
     text-decoration: none;
-    color: inherit;
-    display: block;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
+/* Article Title */
 .article-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #2d3748;
-    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #00ffd1;
 }
 
+/* Article Excerpt */
 .article-excerpt {
-    font-size: 0.95rem;
-    color: #4a5568;
-    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    color: #cccccc;
+    flex-grow: 1;
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
+/* Read More */
 .read-more {
-    font-size: 0.875rem;
-    color: #3182ce;
-    font-weight: 500;
+    font-weight: bold;
+    color: #00ffd1;
+    margin-top: auto;
+}
+
+/* Animations */
+.article-card {
+    animation: fadeIn 1s ease both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Fixes */
+@media (max-width: 600px) {
+    .article-title {
+        font-size: 1.5rem;
+    }
+
+    .article-excerpt {
+        font-size: 1rem;
+    }
 }

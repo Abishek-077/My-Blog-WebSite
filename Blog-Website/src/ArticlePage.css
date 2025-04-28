@@ -1,0 +1,93 @@
+/* Main Article Container */
+.article-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+.article-container:hover {
+    transform: translateY(-5px);
+}
+
+/* Article Title */
+.article-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #00ffd1;
+    /* Minty highlight */
+    margin-bottom: 20px;
+}
+
+/* Upvote Section */
+.upvote-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.upvote-button {
+    padding: 10px 20px;
+    background-color: #00ffd1;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.upvote-button:hover {
+    background-color: #00b8a9;
+    transform: scale(1.1);
+}
+
+.upvote-section p {
+    font-size: 1.2rem;
+}
+
+/* Article Content */
+.article-content {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* Comment Section */
+.comment-section {
+    margin-top: 50px;
+    font-size: 1.1rem;
+}
+
+.comment-section hr {
+    margin: 40px 0;
+    border-color: #00ffd1;
+    opacity: 0.3;
+}
+
+.login-message {
+    font-style: italic;
+    color: #d1d1d1;
+}
+
+/* Mobile Style */
+@media (max-width: 768px) {
+    .article-container {
+        padding: 15px;
+    }
+
+    .article-title {
+        font-size: 2.5rem;
+    }
+
+    .upvote-button {
+        width: 100%;
+        margin-top: 15px;
+    }
+}

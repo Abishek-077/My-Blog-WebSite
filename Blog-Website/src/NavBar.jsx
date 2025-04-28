@@ -8,41 +8,37 @@ export default function NavBar() {
     const navigate = useNavigate();
 
     return (
-        <>
-            <ul>
-                <li>
-                    <Link to={'/'}>HomePage</Link>
+        <nav className="navbar">
+            <ul className="navbar-list">
+                <li className="navbar-item">
+                    <Link to={'/'} className="navbar-link">HomePage</Link>
                 </li>
-
-                <li>
-                    <Link to={'/about'}>About Me</Link>
+                <li className="navbar-item">
+                    <Link to={'/about'} className="navbar-link">About Me</Link>
                 </li>
-
-                <li>
-                    <Link to={'/articles'}>My Articles</Link>
+                <li className="navbar-item">
+                    <Link to={'/articles'} className="navbar-link">My Articles</Link>
                 </li>
 
                 {isLoading ? (
-                    <li>Loading......</li>
+                    <li className="navbar-item">Loading......</li>
                 ) : (
                     <>
                         {user && (
-                            <li>
-                                <p>Logged in as {user.email}</p>
+                            <li className="navbar-item user-info">
+                                <p>Logged in as <span className="user-email">{user.email}</span></p>
                             </li>
                         )}
-
-                        <li>
+                        <li className="navbar-item">
                             {user ? (
                                 <button className='button-style' onClick={() => signOut(getAuth())}>Log Out</button>
                             ) : (
                                 <button className='button-style' onClick={() => navigate('/login')}>Log In</button>
                             )}
                         </li>
-
                     </>
                 )}
             </ul>
-        </>
+        </nav>
     );
 }

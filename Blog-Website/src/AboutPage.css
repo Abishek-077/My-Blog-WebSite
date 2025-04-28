@@ -1,0 +1,122 @@
+/* Background Setup */
+.about-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    overflow: hidden;
+}
+
+/* Card Setup */
+.about-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    animation: fadeIn 1.5s ease;
+}
+
+/* Profile Image */
+.about-image {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 4px solid #fff;
+}
+
+/* Main Titles */
+.about-title {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+.about-title span {
+    color: #00ffd1;
+}
+
+/* Sub Tagline */
+.about-tagline {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    font-weight: 300;
+    color: #ccc;
+}
+
+/* Description Text */
+.about-description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Sections */
+.about-section {
+    margin-bottom: 30px;
+}
+
+.about-section h2 {
+    color: #00ffd1;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.about-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-section ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* Connect Links */
+.about-connect a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background: #00ffd1;
+    color: #0a0a0a;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.about-connect a:hover {
+    background: #ffffff;
+    color: #000;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .about-title {
+        font-size: 2rem;
+    }
+
+    .about-description,
+    .about-section ul li {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,130 @@
+Home Page Main Container .home-container {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    backdrop-filter: blur(10px);
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    backdrop-filter: blur(10px);
+    padding: 50px 30px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 50px;
+}
+
+.hero-content {
+    backdrop-filter: blur(8px);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #00ffd1;
+    /* Minty highlight */
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+.explore-button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    background-color: #00ffd1;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.explore-button:hover {
+    background-color: #00b8a9;
+    transform: scale(1.05);
+}
+
+/* Popular Articles Section */
+.popular-articles-section {
+    margin-top: 60px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #e3dede;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* YouTube Videos Section */
+.youtube-videos-section {
+    margin-top: 60px;
+}
+
+.youtube-videos-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.video-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover {
+    transform: scale(1.03);
+}
+
+.video-card iframe {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover iframe {
+    transform: scale(1.05);
+}
+
+.video-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .youtube-videos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .explore-button {
+        width: 100%;
+        margin-top: 15px;
+    }
+}
