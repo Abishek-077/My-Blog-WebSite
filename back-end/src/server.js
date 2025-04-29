@@ -23,7 +23,9 @@ let db;
 
 // Connect to MongoDB
 async function connectToDB() {
-    const uri = 'mongodb://127.0.0.1:27017';
+    const uri = !process.env.MONGODB_USERNAME
+        ? 'mongodb://127.0.0.1:27017'
+        : `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.PASSWORD}>@cluster0.l5zmtvu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 
     const client = new MongoClient(uri, {
         serverApi: {
