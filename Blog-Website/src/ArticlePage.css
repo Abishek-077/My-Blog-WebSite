@@ -2,27 +2,47 @@
 .article-container {
     max-width: 1200px;
     margin: 50px auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
     color: white;
-    font-family: 'Roboto', sans-serif;
-    transition: all 0.3s ease-in-out;
+    font-family: 'Inter', 'Roboto', sans-serif;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.article-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00ffd1, transparent);
+    opacity: 0.5;
 }
 
 .article-container:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.15);
 }
 
 /* Article Title */
 .article-title {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #00ffd1;
-    /* Minty highlight */
-    margin-bottom: 20px;
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #00ffd1, #00b8a9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 10px rgba(0, 255, 209, 0.2);
+    letter-spacing: -0.5px;
 }
 
 /* Upvote Section */
@@ -30,64 +50,123 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(0, 255, 209, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 255, 209, 0.1);
 }
 
 .upvote-button {
-    padding: 10px 20px;
-    background-color: #00ffd1;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #00ffd1, #00b8a9);
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     font-size: 1.1rem;
+    font-weight: 600;
+    color: #000;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 255, 209, 0.3);
 }
 
 .upvote-button:hover {
-    background-color: #00b8a9;
-    transform: scale(1.1);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 255, 209, 0.4);
 }
 
 .upvote-section p {
     font-size: 1.2rem;
+    font-weight: 500;
+    color: #00ffd1;
 }
 
 /* Article Content */
 .article-content {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 30px;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.article-content p {
+    margin-bottom: 1.5em;
+    position: relative;
+    padding-left: 20px;
+}
+
+.article-content p::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #00ffd1;
+    opacity: 0.5;
 }
 
 /* Comment Section */
 .comment-section {
-    margin-top: 50px;
+    margin-top: 60px;
     font-size: 1.1rem;
 }
 
 .comment-section hr {
     margin: 40px 0;
-    border-color: #00ffd1;
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00ffd1, transparent);
     opacity: 0.3;
 }
 
 .login-message {
     font-style: italic;
-    color: #d1d1d1;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 255, 209, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 209, 0.1);
 }
 
 /* Mobile Style */
 @media (max-width: 768px) {
     .article-container {
-        padding: 15px;
+        padding: 25px;
+        margin: 20px;
     }
 
     .article-title {
         font-size: 2.5rem;
     }
 
+    .upvote-section {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
     .upvote-button {
         width: 100%;
-        margin-top: 15px;
+        max-width: 200px;
     }
+
+    .article-content {
+        font-size: 1.1rem;
+    }
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.article-container {
+    animation: fadeIn 0.6s ease-out forwards;
 }
