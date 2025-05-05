@@ -12,4 +12,17 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'firebase-vendor': ['firebase'],
+          'ui-vendor': ['framer-motion', 'react-icons']
+        }
+      }
+    }
+  }
 });

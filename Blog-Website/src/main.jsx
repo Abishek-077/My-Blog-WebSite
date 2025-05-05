@@ -6,13 +6,12 @@ import App from './App.jsx';
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAwkLfjxFKbYuaxoBBs-HG1kjSvDegaXRY",
-  authDomain: "my-blog-website-c19d7.firebaseapp.com",
-  projectId: "my-blog-website-c19d7",
-  storageBucket: "my-blog-website-c19d7.appspot.com", 
-  // storageBucket: "my-blog-website-c19d7.firebasestorage.app",
-  messagingSenderId: "80145911553",
-  appId: "1:80145911553:web:4ea5d664939cb535231500"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
